@@ -10,7 +10,7 @@ export function useWeb3<T extends NetworkPluginID>(pluginID?: T, options?: Web3H
     type GetWeb3 = (options?: Web3Helper.Web3ConnectionOptions<T>) => Promise<Web3Helper.Web3<T>>
 
     const { Connection } = useWeb3State(pluginID)
-    const chainId = useChainId(pluginID)
+    const chainId = useChainId(pluginID, options?.chainId)
     const account = useAccount(pluginID)
     const providerType = useProviderType(pluginID)
 
@@ -22,7 +22,7 @@ export function useWeb3<T extends NetworkPluginID>(pluginID?: T, options?: Web3H
             providerType,
             ...options,
         } as Web3Helper.Web3ConnectionOptions<T>)
-    }, [account, chainId, providerType, Connection, JSON.stringify(options)])
+    }, [account, chainId, providerType, JSON.stringify(options)])
 
     return web3
 }
