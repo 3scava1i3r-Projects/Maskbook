@@ -164,6 +164,7 @@ export namespace NonFungibleTokenAPI {
             from: string,
             opts?: HubOptions<ChainId>,
         ) => Promise<Pageable<NonFungibleToken<ChainId, SchemaType>>>
+        // TODO rename as getCollection(?)
         getContract?: (
             address: string,
             opts?: HubOptions<ChainId>,
